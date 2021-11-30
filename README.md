@@ -1,46 +1,57 @@
-# Getting Started with Create React App
+# Pirate Shuffle game
+Jack the pirate has lost his coins and they are hidden away in buckets. You can help him find them?
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Stack
+- React
+- Styled-components
+- react-canvas-confetti
+- valtio
+- typescript
 
-## Available Scripts
+## Time spent
+- Design (1 hour)
+- Game logic (2-3 hours)
+- UI / Design implementation (2 hours)
 
-In the project directory, you can run:
+## Device support
+- Browser
 
-### `yarn start`
+## Start the app
+- `yarn`
+- `yarn start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Code explained
+For this project I decided to go with:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### React
+It is easy to work with, powerfull enough for a simple game and fullfills the requirement "UI as a function of state"
 
-### `yarn test`
+### Styled-components
+Styled components is a "css-in-js" styling option that works well with React, allows for tight coupling the css to components without the extra layer of css classes.
+It also allows passing variables and logic.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Valtio
+Valtio is a simple state management proxy, it allows for direct manipluation and a reactive UI. 
+As the game only stores a tiny bit of data, has simple logic and bennefits from seperated logic with a reactive UI Valtio is a good option.
 
-### `yarn build`
+### React-scripts
+A simple way of setting up a simple react project without needing to setup webpack/babel or any packager.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Typescript
+Typescript adds a strongly types layer ontop of javascript to help developers create better code
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Expansion
+The levels of the game can be expanded by adjusting the logic of `setupLevelConfig` in `src/state/game/setupLevel.tsx`. This function determines the amount of cups, rows, shuffles and shuffle speed.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## File structure
+- `/public` - All publicly available files on the web, mostly images.
+- `/src/components` - All the individual UI components
+- `/src/state` - The store/data state of the app, including action.
+- `/src/state/game` - A collection of functions to help perform game logic found in the actions
+- `/src/App.tsx` - The main app component, the starting place of the app.
+- `/styles.tsx` - A collection of global css styles, like a reset, and the theme with colors/color presets 
 
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Screenshots
+![Intro](public/screenshots/intro.png)
+![Level 1](public/screenshots/level-1.png)
+![Level 15](public/screenshots/level-15.png)

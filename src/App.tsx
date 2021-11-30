@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { GameScene } from './components/GameScene'
+import styled, { ThemeProvider } from 'styled-components'
+import { theme, GlobalStyle } from './styles'
+
+import { Intro } from './components/Intro'
+import { useAppState, actions } from './state'
 
 function App() {
+  const appState = useAppState()
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <GlobalStyle/>
+      <ThemeProvider theme={theme}>
+        <Container>
+          {appState.showIntro && <Intro onClick={actions.hideIntro}/>}
+          {appState.showGame && <GameScene/>}
+        </Container>
+      </ThemeProvider>
+    </>
   );
 }
+
+const Container = styled.div`
+  display: flex;
+  flex: 1;
+  border: 13px solid ${props => props.theme.primary};
+`
+
 
 export default App;
